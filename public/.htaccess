@@ -25,24 +25,14 @@
 
 # </IfModule>
  
-
 <IfModule mod_rewrite.c>
     RewriteEngine On
-
-    # Force HTTPS
-    RewriteCond %{HTTPS} !=on
-    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-
-    # Redirect Trailing Slashes If Not A Folder...
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{REQUEST_URI} (.+)/$
-    RewriteRule ^ %1 [L,R=301]
 
     # Send Requests To Front Controller...
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
-    RewriteRule ^storage/(.*)$ /var/www/html/storage/app/public/$1 [L]
-    # RewriteRule ^storage/(.*)$ storage/app/public/$1 [L]
 
+    # Serve Storage Files
+    RewriteRule ^storage/(.*)$ storage/app/public/$1 [L]
 </IfModule>
