@@ -18,6 +18,9 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 # Enable Apache mod_rewrite for Laravel
 RUN a2enmod rewrite
 
+# Copy Laravel Apache configuration (First Step)
+COPY apache-laravel.conf /etc/apache2/sites-available/000-default.conf
+
 # Set working directory
 WORKDIR /var/www/html
 
