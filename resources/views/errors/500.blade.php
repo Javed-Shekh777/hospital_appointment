@@ -1,7 +1,8 @@
-@extends('layouts.auth')
+<!-- resources/views/errors/500.blade.php -->
+@extends('layouts.app')
 
-@section('authcontent')
-    <h2>Oops! Something went wrong.</h2>
-    <p>{{ $exception->getMessage() }}</p>
-    <a href="{{ route('/') }}">Go Home</a>
+@section('content')
+    <h1>Something went wrong!</h1>
+    <p>We are working on it. Please try again later.</p>
+    <a href="{{ url('/') }}">Go to Homepage</a>
 @endsection

@@ -6,15 +6,11 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-
+use Illuminate\Support\Facades\Log;
+use Exception;
 
 class HomeController extends Controller
 {
-    /**
-     * Display a listing of the resorce.
-     */
-
-   
     public function index()
     {
         return view('home');
@@ -24,115 +20,105 @@ class HomeController extends Controller
     {
         return view('alldoctors');
     }
+
     public function about()
     {
         return view('about');
     }
+
     public function contact()
     {
         return view('contact');
     }
 
-    public function myProfile(){
-        if (Auth::check()) {
-            $user = Auth::user();
-            // Role-based redirection
-            if ($user->role === 'patient') {
-                return view('profile');
-
+    public function myProfile()
+    {
+        try {
+            if (Auth::check()) {
+                $user = Auth::user();
+                if ($user->role === 'patient') {
+                    return view('profile');
+                }
             }
+            return view('home');
+        } catch (Exception $e) {
+            Log::error('Error loading myProfile page: ' . $e->getMessage());
+            return back()->with('error', 'Failed to load profile page.');
         }
-        return view('home');
     }
 
-    public function myProfileUpdate(Request $request){
-        if(!Auth::check()){
-             return redirect('/login');
-        }
-
-     $user= User::where('email',Auth::user()->email)->first();
-
-
-     if($request->hasFile('profile_image')){
-        if($user->profile_image && Storage::disk('public')->exists(Auth::user()->profile_image)){
-            Storage::disk('public')->delete($user->profile_image);
-        }
-
-        $profileImagePath = $request->file('profile_image')->store('profile_images','public');
-        $user->profile_image = $profileImagePath;
-     }
-
-
-     $user->fullname = $request->fullname;
-     $user->email = $request->email;
-     $user->dob = $request->dob;
-     $user->address = $request->address;
-     $user->phone = $request->phone;
-     $user->gender = $request->gender ?? 'other'; // 👈 अगर empty है तो 'other' set कर दो
-
-
-     $user->save();
-
-     return redirect('/my-profile')->with('success', 'Profile updated successfully!');
-
-    }
-
-    public function myappointments(){
-        if (Auth::check()) {
-            $user = Auth::user();
-            // Role-based redirection
-            if ($user->role === 'patient') {
-                return view('myappointments');
-
+    public function myProfileUpdate(Request $request)
+    {
+        try {
+            if (!Auth::check()) {
+                return redirect('/login');
             }
+
+            $user = User::where('email', Auth::user()->email)->firstOrFail();
+
+            if ($request->hasFile('profile_image')) {
+                if ($user->profile_image && Storage::disk('public')->exists($user->profile_image)) {
+                    Storage::disk('public')->delete($user->profile_image);
+                }
+
+                $profileImagePath = $request->file('profile_image')->store('profile_images', 'public');
+                $user->profile_image = $profileImagePath;
+            }
+
+            $user->fullname = $request->fullname;
+            $user->email = $request->email;
+            $user->dob = $request->dob;
+            $user->address = $request->address;
+            $user->phone = $request->phone;
+            $user->gender = $request->gender ?? 'other'; // Default gender if not provided
+
+            $user->save();
+
+            return redirect('/my-profile')->with('success', 'Profile updated successfully!');
+        } catch (Exception $e) {
+            Log::error('Error updating profile: ' . $e->getMessage());
+            return back()->with('error', 'Profile update failed. Please try again.');
         }
-        return view('home');
     }
-    /**
-     * Show the form for creating a new resource.
-     */
+
+    public function myappointments()
+    {
+        try {
+            if (Auth::check()) {
+                $user = Auth::user();
+                if ($user->role === 'patient') {
+                    return view('myappointments');
+                }
+            }
+            return view('home');
+        } catch (Exception $e) {
+            Log::error('Error loading myappointments page: ' . $e->getMessage());
+            return back()->with('error', 'Failed to load appointments page.');
+        }
+    }
+
+    // Placeholder methods for potential future features
     public function create()
     {
-        //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(s $s)
+    public function show($id)
     {
-        //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(s $s)
+    public function edit($id)
     {
-        //
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, s $s)
+    public function update(Request $request, $id)
     {
-        //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(s $s)
+    public function destroy($id)
     {
-        //
     }
 }

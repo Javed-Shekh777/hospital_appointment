@@ -107,14 +107,14 @@
                             <div class="info1">
                                 <p class="label"><label for="gender">Gender</label></p>
                                 <p>
-                                    Male: <input type="radio" name="gender" value="male"
-                                        {{ old('gender', Auth::user()->gender) == 'male' ? 'checked' : '' }}
+                                    Male: <input type="radio" name="gender" value="Male"
+                                        {{ old('gender', Auth::user()->gender) == 'Male' ? 'checked' : '' }}
                                         id="gender_male">
-                                    Female: <input type="radio" name="gender" value="female"
-                                        {{ old('gender', Auth::user()->gender) == 'female' ? 'checked' : '' }}
+                                    Female: <input type="radio" name="gender" value="Female"
+                                        {{ old('gender', Auth::user()->gender) == 'Female' ? 'checked' : '' }}
                                         id="gender_female">
-                                    Other: <input type="radio" name="gender" value="other"
-                                        {{ old('gender', Auth::user()->gender) == 'other' ? 'checked' : '' }}
+                                    Other: <input type="radio" name="gender" value="Other"
+                                        {{ old('gender', Auth::user()->gender) == 'Other' ? 'checked' : '' }}
                                         id="gender_other">
                                 </p>
                             </div>

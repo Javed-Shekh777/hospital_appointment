@@ -34,5 +34,6 @@
     RewriteRule ^ index.php [L]
 
     # Serve Storage Files
+    
     RewriteRule ^storage/(.*)$ storage/app/public/$1 [L]
 </IfModule>
