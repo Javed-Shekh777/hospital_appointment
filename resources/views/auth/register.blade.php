@@ -40,21 +40,21 @@
 
                                 <div class="mb-3">
                                     <label for="role" class="form-label">User Type</label>
-                                    <select class="form-select" id="role" name="role"
-                                        aria-label="Default select example">
+                                    <select class="form-select" id="role" name="role" aria-label="Default select example">
                                         @php
                                             $usersType = ['admin', 'doctor', 'patient'];
                                         @endphp
                                         @foreach ($usersType as $item)
-                                            <option value="{{ $item }}"
-                                                {{ old('role', Auth::user()->role) == $item ? 'selected' : '' }}>
-                                                {{ $item }}</option>
+                                            <option value="{{ $item }}" {{ old('role') == $item ? 'selected' : '' }}>
+                                                {{ ucfirst($item) }}
+                                            </option>
                                         @endforeach
                                     </select>
                                     @if ($errors->has('role'))
                                         <span style="color: red;">{{ $errors->first('role') }}</span>
                                     @endif
                                 </div>
+                                
 
 
                                 <div class="mb-3">
