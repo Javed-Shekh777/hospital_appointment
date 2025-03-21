@@ -50,9 +50,6 @@ class HomeController extends Controller
              return redirect('/login');
         }
 
-    //  dd($request->all());
-
-
      $user= User::where('email',Auth::user()->email)->first();
 
 

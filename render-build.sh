@@ -1,16 +1,22 @@
 #!/bin/sh
 
-# Run Laravel Migrations
+echo "Running Laravel Migrations..."
 php artisan cache:table
-php artisan migrate --force
+php artisan migrate --force || true
 
-
-# Optional: Clear Cache
+echo "Clearing Laravel Cache..."
 php artisan config:clear
 php artisan cache:clear
 php artisan view:clear
 php artisan route:clear
 php artisan config:cache
-php artisan storage:link
 
+echo "Creating Storage Symlink..."
+php artisan storage:link || true
 
+echo "Setting Proper Permissions..."
+chmod -R 775 storage bootstrap/cache
+chown -R www-data:www-data storage bootstrap/cache
+
+echo "Starting Apache Server..."
+apache2-foreground
