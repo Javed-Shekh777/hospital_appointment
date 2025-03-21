@@ -42,6 +42,7 @@ class AuthController extends Controller
             'fullname'=>$request->fullname,
             'email'=>$request->email,
             'password'=>$request->password,
+            'role'=>$request->role,
         ]);
 
         return redirect()->route('login')->with('success', 'Registration successful. Please login.');

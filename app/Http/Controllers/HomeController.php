@@ -68,7 +68,8 @@ class HomeController extends Controller
      $user->dob = $request->dob;
      $user->address = $request->address;
      $user->phone = $request->phone;
-     $user->gender = $request->gender;
+     $user->gender = $request->gender ?? 'other'; // 👈 अगर empty है तो 'other' set कर दो
+
 
      $user->save();
 

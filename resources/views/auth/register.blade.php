@@ -8,10 +8,10 @@
         <div class="container">
             <div class="row">
                 @if (session('success'))
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <strong> {{ session('success') }}</strong>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                  </div>
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong> {{ session('success') }}</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
                 @endif
 
                 <div class="col-lg-4  column col-xxl-8 col-xl-6   mx-auto">
@@ -37,13 +37,32 @@
                                         <span style="color: red;">{{ $errors->first('email') }}</span>
                                     @endif
                                 </div>
- 
+
+                                <div class="mb-3">
+                                    <label for="role" class="form-label">User Type</label>
+                                    <select class="form-select" id="role" name="role"
+                                        aria-label="Default select example">
+                                        @php
+                                            $usersType = ['admin', 'doctor', 'patient'];
+                                        @endphp
+                                        @foreach ($usersType as $item)
+                                            <option value="{{ $item }}"
+                                                {{ old('role', Auth::user()->role) == $item ? 'selected' : '' }}>
+                                                {{ $item }}</option>
+                                        @endforeach
+                                    </select>
+                                    @if ($errors->has('role'))
+                                        <span style="color: red;">{{ $errors->first('role') }}</span>
+                                    @endif
+                                </div>
+
+
                                 <div class="mb-3">
                                     <label for="password" class="form-label">Password</label>
                                     <input type="text" class="form-control" id="password" name="password">
                                     @if ($errors->has('password'))
-                                    <span style="color: red;">{{ $errors->first('password') }}</span>
-                                @endif
+                                        <span style="color: red;">{{ $errors->first('password') }}</span>
+                                    @endif
                                 </div>
                                 <button class="btn register-btn">Create account</button>
                                 <p>Already have an account? <a href="{{ route('login') }}">Login here</a></p>
