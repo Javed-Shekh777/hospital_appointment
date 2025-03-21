@@ -1,0 +1,370 @@
+@media (max-width: 1199px) {
+    /* Header  */
+    .header .header-social-icons,
+    .header .dropdown {
+        order: 2;
+    }
+    .header .navbar-toggler {
+        order: 3;
+        margin-left: 10px;
+    }
+
+    /* Hero  */
+
+    .hero .container .hero-left .hero-sub .hero-sub-img img:nth-child(1) {
+        left: 0;
+    }
+    .hero .container .hero-left .hero-sub .hero-sub-img img:nth-child(2) {
+        right: 15px;
+    }
+    .hero .container .hero-left .hero-sub .hero-sub-img img:nth-child(3) {
+        right: 35px;
+    }
+
+    .hero .container .hero-left .hero-sub p {
+        left: -20px;
+    }
+
+    /* book appontenmt */
+    .bookappointment {
+        padding: 30px 0;
+    }
+
+    /* About page  */
+    .about {
+        padding: 60px 0;
+    }
+
+    .about .about-image img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .about .about-content {
+        margin: 0 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+    }
+
+    .about .about-content p {
+        margin-bottom: 20px;
+    }
+
+    .about .about-content h3 {
+        margin-block: 1rem;
+    }
+
+    /* Authentication  */
+    .register .column {
+        width: 60%;
+    }
+}
+
+@media (max-width: 991px) {
+    /* Header  */
+
+    .header .navbar-brand img {
+        height: 25px;
+        margin: 0;
+        padding: 0;
+    }
+    .header .navbar-toggler {
+        padding: 0;
+        margin: 0;
+    }
+    .header .create-btn {
+        font-size: 0.875rem;
+        padding: 6px 12px !important;
+        margin: 0;
+    }
+
+    .hero .container .hero-left .hero-sub p {
+        left: 10px;
+    }
+
+    /* Book Appointement */
+    /* Book appointement */
+    .bookappointment {
+        padding: 30px 0;
+    }
+
+    .bookappointment .container {
+        padding: 100px 0 0;
+    }
+    .bookappointment .container .row {
+        margin: 0 20px;
+        align-items: center;
+        justify-content: center;
+    }
+    .bookappointment .container .hero-left {
+        display: flex;
+        align-items: start;
+        flex-direction: column;
+    }
+    .bookappointment .container .hero-right {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* All doctors page  */
+    .doctor-filter-container .main {
+        position: relative;
+    }
+    .doctor-filter-container .main .container {
+        width: 100%;
+    }
+    .doctor-filter-container > .filter-icon {
+        display: flex;
+    }
+
+    .doctor-filter {
+        display: none;
+        background-color: var(--background-color);
+        border: 1px solid var(--surface-color);
+        transition: all 0.3s;
+        box-shadow: 0 0 5px var(--surface-color);
+        width: 250px;
+        padding: 10px;
+        border-radius: 5px;
+        z-index: 10;
+        position: absolute;
+        left: 0;
+    }
+    .doctor-filter.active {
+        display: flex;
+        transition: all 0.3s;
+    }
+
+    /* About page  */
+    .about .about-image {
+        margin-bottom: 1.5rem;
+    }
+    .about .about-content {
+        margin: 0;
+    }
+    .about .about-content p {
+        margin-bottom: 40px;
+    }
+    .about .about-content h3 {
+        margin-block: 1.5rem;
+    }
+
+    .whychoose {
+        padding: 0;
+    }
+    .whychoose h1 {
+        font-size: 24px;
+        margin-block: 10px 0;
+    }
+
+    /* My Appointments  */
+    .my-appointment .my-appointment-item .appointment-btns {
+        margin-bottom: 10px;
+        margin-top: 30px;
+    }
+    .my-appointment .my-appointment-item .appointment-btns .btns {
+        display: flex;
+        width: 100%;
+        gap: 20px;
+        flex-direction: row;
+    }
+    .my-appointment .my-appointment-item .appointment-btns .btns a {
+        margin-bottom: 0;
+        flex-wrap: nowrap;
+    }
+
+    /* Admin Dahbard  */
+    .dashboard .sidebar {
+        width: 240px;
+    }
+
+    .dashboard .sidebar-content {
+        left: 240px;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Header  */
+    .header {
+        padding: 0.5rem;
+    }
+
+    /* Footer  */
+    .footer .footer-bottom {
+        padding-bottom: 0;
+    }
+
+    /* Hero  */
+    .hero {
+        padding: 40px 0;
+    }
+    .hero .container {
+        padding: 30px 0 0 0;
+    }
+    .hero .container .row {
+        margin: 0 10px;
+    }
+
+    .hero .container .hero-left .hero-title,
+    .bookappointment .container .hero-left .hero-title {
+        font-size: 2.5rem;
+        line-height: 3.5rem;
+    }
+    .hero .container .hero-left .hero-sub {
+        flex-wrap: wrap;
+    }
+
+    .hero .container .hero-left .hero-sub p {
+        left: 0;
+        margin: 10px 0;
+    }
+
+    /* About page  */
+    .about {
+        padding: 30px 0;
+    }
+
+    /* Contact page */
+    .contact .contact-info li {
+        margin-bottom: 25px;
+    }
+
+    /* Authentication  */
+    /* Authentication  */
+    .register .column {
+        width: 100%;
+    }
+    .register .card {
+        padding: 20px 0;
+        color: #4b5563;
+    }
+
+    .register .column .card-body h1 {
+        font-size: 1.8rem;
+    }
+
+    /* My apoointments  */
+    .my-appointment .my-appointment-item .my-appointment-left {
+        display: flex;
+        gap: 25px;
+        flex-direction: column;
+    }
+
+    /* Admin Dashboard  */
+    .dashboard {
+        display: flex;
+        height: 100vh;
+        top: 70px;
+        position: relative;
+        left: 0;
+    }
+    .dashboard .sidebar {
+        width: 260px;
+        display: none;
+        position: fixed;
+        overflow-x: hidden;
+        border-right: 1px solid #bebebe;
+        overflow-y: auto;
+        height: 100%;
+    }
+    .dashboard .sidebar.active {
+        display: block;
+        z-index: 1000;
+        background: #fff;
+    }
+
+    .dashboard .sidebar-content {
+        margin-left: 0; /* Sidebar jitna width hai, utna margin */
+        width: calc(100% - 0px); /* Sidebar ke baad jitna space bacha utna le */
+    }
+}
+
+@media (max-width: 450px) {
+    /* Hero  */
+    .hero .container .hero-left .hero-title {
+        font-size: 2rem;
+        line-height: 3rem;
+        text-align: left;
+    }
+
+    .hero .container .hero-left .hero-sub p {
+        margin: 15px 0;
+        font-size: 15px;
+    }
+
+    .hero .container .hero-left .hero-btn {
+        margin: 0 0 20px;
+    }
+
+    /* Book Appointement */
+    .bookappointment .container {
+        padding: 50px 0 0;
+    }
+    .bookappointment .container .hero-left .hero-title {
+        text-align: center;
+        font-size: 2rem;
+        line-height: 3rem;
+    }
+
+    .bookappointment .container .hero-left .hero-btn {
+        margin: 0 auto;
+    }
+
+    /* About page  */
+    .about .row {
+        margin: 20px 0;
+        gap: 20px;
+    }
+    .about .about-content p {
+        margin-bottom: 20px;
+    }
+
+    .about .about-content h3 {
+        margin-block: 1rem;
+    }
+
+    .whychoose {
+        padding: 30px 0 0;
+    }
+
+    /* My Appointments  */
+    .my-appointment .my-appointment-item {
+        display: flex;
+        align-items: start;
+        padding: 5px 0;
+    }
+    .my-appointment .my-appointment-item .appointment-btns {
+        margin-top: 10px;
+    }
+    .my-appointment .my-appointment-item .appointment-btns .btns {
+        display: flex;
+        width: 100%;
+        gap: 20px;
+        flex-direction: column;
+    }
+    .my-appointment .my-appointment-item .appointment-btns .btns a {
+        margin-bottom: 10px;
+        flex-wrap: nowrap;
+    }
+
+    /* Latest Appointments */
+    .dashboard .sidebar-content .latest-appointments-container .card-body {
+        padding: 0;
+    }
+    .dashboard
+        .sidebar-content
+        .latest-appointments-container
+        .card-body
+        .box1 {
+        padding: 10px;
+        border-bottom: 1px solid #e1e1e1;
+    }
+}
+
+@media (max-width: 280px) {
+    .my-profile .profile-images {
+        flex-wrap: wrap;
+    }
+}
