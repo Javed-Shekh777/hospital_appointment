@@ -1,7 +1,7 @@
-# Step 1: Use official PHP image
-FROM php:8.2-fpm
+# Use official PHP + Apache image
+FROM php:8.2-apache
 
-# Step 2: Install necessary extensions & dependencies
+# Install required extensions & dependencies
 RUN apt-get update && apt-get install -y \
     unzip \
     curl \
@@ -12,23 +12,27 @@ RUN apt-get update && apt-get install -y \
     libonig-dev \
     && docker-php-ext-install pdo pdo_mysql mbstring gd
 
-# Step 3: Install Composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+# Enable Apache mod_rewrite for Laravel
+RUN a2enmod rewrite
 
-# Step 4: Set working directory
+# Set working directory
 WORKDIR /var/www/html
 
-# Step 5: Copy Laravel files
+# Copy Laravel files
 COPY . .
 
-# Step 6: Install Laravel dependencies
+# Install Laravel dependencies
 RUN composer install --no-dev --optimize-autoloader
 
-# Step 7: Set permissions
+# Set proper permissions
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
-# Step 8: Expose port
-EXPOSE 9000
+# Copy entrypoint script and give it execute permission
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
-# Step 9: Start PHP-FPM server
-CMD ["php-fpm"]
+# Expose HTTP port
+EXPOSE 80
+
+# Run the entrypoint script
+CMD ["/entrypoint.sh"]

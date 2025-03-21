@@ -23,3 +23,6 @@ services:
         value: uyhrxb70otikl5rv
       - key: DB_PASSWORD
         value: mlJXkEvxFoKvjfIindQJ
+    buildCommand: |
+      chmod +x render-build.sh
+      ./render-build.sh    
