@@ -38,7 +38,7 @@
                 <div class="profile-image" id="profile-dropdown">
                     <img class="img-fluid rounded-circle" 
                     src="{{Auth::user()->profile_image ? 
-                    url('storage/' . Auth::user()->profile_image)
+                    asset('storage/' . Auth::user()->profile_image)
                     : asset('assets/img/profile_img.svg') }}"
                     
                      alt="profile image">
