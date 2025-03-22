@@ -22,7 +22,8 @@
                     @foreach ($doctors as $doctor)
                         <div class="doctor">
                             <div class="doctor-img">
-                                <img src="{{ asset('storage/' . $doctor->user()->profile_image)) }}" class="img-fluid">
+                                <img src="{{ optional($doctor->user)->profile_image ? asset('storage/' . optional($doctor->user)->profile_image) : asset('assets/img/profile_img.svg') }}"
+                                    class="img-fluid">
                                 <div class="icons">
                                     <a class="edit" href="{{ route('admin.doctor.edit', $doctor->id) }}"><i
                                             class="bi bi-pencil-square"></i></a>
