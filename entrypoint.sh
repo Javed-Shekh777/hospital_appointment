@@ -14,6 +14,9 @@ php artisan storage:link
 # Run Laravel Migrations (Clean Start)
 php artisan migrate:fresh --seed --force
 
+# Run DoctorSeeder
+php artisan db:seed --class=DoctorSeeder
+
 # Cache Config for Performance
 php artisan config:cache
 
