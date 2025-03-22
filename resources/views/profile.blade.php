@@ -60,7 +60,7 @@
                     <div class="col-lg-5">
                         <div class="  profile-images ">
                             <div class="image profile-image">
-                                <img src="{{ Auth::user()->profile_image ? asset('storage/' . Auth::user()->profile_image) : asset('assets/img/profile_pic.svg') }}"
+                                <img src="{{ Auth::user()->profile_image ?  Storage::url(Auth::user()->profile_image)  : asset('assets/img/profile_pic.svg') }}"
                                 alt="" class="img-fluid rounded " style="height: 150px;width:150px;object-fit:cover;">
                             </div>
                             <div class="image profile-image">
