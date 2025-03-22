@@ -36,13 +36,16 @@ class DoctorController extends Controller
             ]);
 
             if ($request->hasFile('profile_image')) {
-                if ($user->profile_image && Storage::disk('public')->exists($user->profile_image)) {
-                    Storage::disk('public')->delete($user->profile_image);
+                $oldImage = $user->profile_image;
+            
+                if (!empty($oldImage) && str_starts_with($oldImage, 'profile_images/') && Storage::disk('public')->exists($oldImage)) {
+                    Storage::disk('public')->delete($oldImage);
                 }
-
                 $profileImagePath = $request->file('profile_image')->store('profile_images', 'public');
                 $user->profile_image = $profileImagePath;
             }
+            
+            
 
             $user->fullname = $request->name;
             $user->email = $request->email;
