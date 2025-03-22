@@ -35,5 +35,8 @@
 
     # Serve Storage Files
     
-    RewriteRule ^storage/(.*)$ storage/app/public/$1 [L]
+    # Redirect storage requests to actual storage path
+RewriteCond %{REQUEST_URI} ^/storage/(.*)$
+RewriteCond %{DOCUMENT_ROOT}/storage/app/public/%1 -f
+RewriteRule ^storage/(.*)$ storage/app/public/$1 [L]
 </IfModule>
