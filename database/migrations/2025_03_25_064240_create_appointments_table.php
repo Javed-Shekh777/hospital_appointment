@@ -15,10 +15,11 @@ return new class extends Migration
             $table->id();
             $table->foreignId('patient_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('doctor_id')->constrained('doctors')->onDelete('cascade');
-            $table->dateTime('appointment_date');
-            $table->enum('status', ['pending', 'confirmed', 'cancelled', 'completed'])->default('pending');
-            $table->enum('payment_status', ['pending', 'paid', 'failed'])->default('pending');
+            $table->foreignId('slot_id')->constrained('available_slots')->onDelete('cascade');
+            $table->enum('status',['pending', 'confirmed', 'cancelled', 'completed'])->default('pending');
+            $table->enum('payment_status',['pending', 'paid', 'failed'])->default('pending');
             $table->timestamps();
+            $table->unique('slot_id');  
         });
     }
 

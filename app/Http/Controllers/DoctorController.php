@@ -11,6 +11,8 @@ use Exception;
 
 class DoctorController extends Controller
 {
+
+    
     public function edit(Request $request, $id)
     {
         try {
@@ -25,6 +27,8 @@ class DoctorController extends Controller
     public function update(Request $request, $id)
     {
         try {
+
+            // dd($request->all());
             $doctor = Doctor::findOrFail($id);
             $user = User::findOrFail($doctor->user_id);
 

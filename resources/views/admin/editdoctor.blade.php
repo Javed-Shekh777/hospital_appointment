@@ -19,7 +19,7 @@
                                 ? asset('storage/' . $doctor->user->profile_image)
                                 : asset($doctor->user->profile_image) }}"
                                 style="width: 100px;height: 100px;object-fit: cover;border-radius: 50%;"
-                                class="rounded-circle img-fluid" alt="Profile Image">
+                                class="rounded-circle img-fluid" alt="{{$doctor->user->profile_image}}">
 
                             <label for="profile_image" style="cursor: pointer;" class="border rounded-circle">
                                 <input type="file" class="form-control d-none" name="profile_image" id="profile_image"
@@ -171,7 +171,7 @@
     </section>
 
     <script>
-        document.getElementById("profile_image").addEventListener("change", function(event) {
+        document.getElementById("profile_image")?.addEventListener("change", function(event) {
             let file = event.target.files[0]; // Selected file
             if (file) {
                 let reader = new FileReader();

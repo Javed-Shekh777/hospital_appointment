@@ -17,12 +17,12 @@
 
 
     <!-- Vendor JS Files -->
-    <script src="{{ secure_asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ secure_asset('assets/vendor/aos/aos.js') }}"></script>
-    <script src="{{ secure_asset('assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/aos/aos.js') }}"></script>
+    <script src="{{ asset('assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
 
     <!-- Main JS File -->
-    <script src="{{ secure_asset('assets/js/main.js') }}"></script>
+    <script src="{{ asset('assets/js/main.js') }}"></script>
     <script>
         document.getElementById("profile_image").addEventListener("change", function(event) {
             let file = event.target.files[0]; // Selected file

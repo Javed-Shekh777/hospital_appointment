@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('appointment_id')->unique()->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->decimal('amount', 10, 2);
             $table->enum('payment_status', ['pending', 'successful', 'failed'])->default('pending');
             $table->enum('payment_method', ['card', 'upi', 'netbanking', 'cash']);
+            $table->enum('payment_type', ['Razorpay', 'Stripe']);
             $table->string('transaction_id')->unique()->nullable();
             $table->timestamps();
         });

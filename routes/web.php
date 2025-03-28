@@ -15,6 +15,9 @@ Route::get('/about',[HomeController::class,'about'])->name("about");
 Route::get('/contact',[HomeController::class,'contact'])->name("contact");
 Route::get('/my-profile',[HomeController::class,'myProfile'])->name("my-profile");
 Route::get('/my-appointments',[HomeController::class,'myappointments'])->name("my-appointments");
+Route::post('/book-appointment',[HomeController::class,'bookappointment'])->name("book-appointment");
+Route::get('/cancel-appointment/{id}',[HomeController::class,'cancelappointment'])->name("cencel-appointment");
+
 
 Route::post('/my-profile',[HomeController::class,'myProfileUpdate'])->name("my-profile.update");
 
@@ -52,6 +55,17 @@ Route::middleware(['role'])->prefix('dashboard')->group(function () {
     Route::get('/add-doctor', function () {
         return view('admin.adddoctor');
     })->name('admin.adddoctor');
+
+    Route::get('/all-patients', 
+    [AdminController::class,'allpatients'])->name('admin.allpatients');
+
+    Route::get('/all-users', 
+    [AdminController::class,'allusers'])->name('admin.allusers');
+
+    Route::get('/dashboard/all-users/view/{id}', [AdminController::class, 'viewUser'])->name('admin.all-users.view');
+Route::post('/dashboard/all-users/update/{id}', [AdminController::class, 'updateUser'])->name('admin.all-users.update');
+Route::get('/dashboard/all-users/delete/{id}', [AdminController::class, 'deleteUser'])->name('admin.all-users.delete');
+
 });
 
 
@@ -59,6 +73,8 @@ Route::post('/add-doctor',[AdminController::class,'addDoctor'])->name('add.docto
 Route::get('/dashboard/doctors/edit/{id}', [DoctorController::class, 'edit'])->name('admin.doctor.edit');
 Route::post('/dashboard/doctors/update/{id}', [DoctorController::class, 'update'])->name('admin.doctor.update');
 Route::post('/dashboard/doctors/delete/{id}', [DoctorController::class, 'delete'])->name('admin.doctor.delete');
+Route::get('/doctor/{id}',[HomeController::class,'doctor'])->name('doctor');
+
 
 
 

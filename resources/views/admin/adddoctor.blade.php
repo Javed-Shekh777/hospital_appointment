@@ -126,12 +126,9 @@
                                     </div>
     
                                 </div>
-                                
-                                
-
-
-                                @if ($errors->has('phone'))
-                                    <span style="color: red;">{{ $errors->first('phone') }}</span>
+                            
+                                @if ($errors->has('gender'))
+                                    <span style="color: red;">{{ $errors->first('gender') }}</span>
                                 @endif
                             </div>
 
@@ -180,7 +177,6 @@
                                     <span style="color: red;">{{ $errors->first('phone') }}</span>
                                 @endif
                             </div>
-
                         </div>
 
                         <div class="row">
@@ -193,7 +189,29 @@
                             </div>
                         </div>
 
-                        <button type="submit" class="btn mb-2 create-btn px-5" style="width: fit-content;">Add
+                        <button type="button" style="width: fit-content;" class="btn  ms-auto btn-primary mb-3 " id="add_slot">+ Add Slot</button>
+
+                        <div class="row">
+                            <div class="col-lg-6 mb-3">
+                                <label for="slot_date" class="form-label">Available Date</label>
+                                <input type="date" class="form-control" name="slot_date[]" id="slot_date">
+                            </div>
+                            <div class="col-lg-3 mb-3">
+                                <label for="slot_start_time" class="form-label">Start Time</label>
+                                <input type="time" class="form-control" name="slot_start_time[]" id="slot_start_time">
+                            </div>
+                            <div class="col-lg-3 mb-3">
+                                <label for="slot_end_time" class="form-label">End Time</label>
+                                <input type="time" class="form-control" name="slot_end_time[]" id="slot_end_time">
+                            </div>
+                        </div>
+                        
+                        
+                        <!-- Here new slots will be added -->
+                        <div id="slot_container"></div>
+                        
+
+                        <button type="submit" class="btn mb-2 create-btn px-md-5 px-3 mx-2" style="width: fit-content;">Add
                             Doctor</button>
 
                     </form>
@@ -209,7 +227,7 @@
     </section>
 
     <script>
-        document.getElementById("profile_image").addEventListener("change", function(event) {
+        document.getElementById("profile_image")?.addEventListener("change", function(event) {
             let file = event.target.files[0]; // Selected file
             if (file) {
                 let reader = new FileReader();

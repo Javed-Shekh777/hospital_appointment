@@ -65,9 +65,32 @@
                         <span>Latest Appointments</span>
                     </div>
                     <div class="card-body ">
+                        @foreach ($latestAppointments as $latestAppointment)
                         <div class="box1">
                             <div class="card-body-left">
-                                <img src="{{ asset('assets/img/profile_img.svg') }}" alt="" class="img-fluid">
+                                <img 
+                                src="{{ str_starts_with($latestAppointment->doctor->user->profile_image, 'profile_images/')
+                                ? asset('storage/' . $latestAppointment->doctor->user->profile_image)
+                                : asset( $latestAppointment->doctor->user->profile_image) }}"
+                                  alt="Doctor image" class="img-fluid">
+                                <div class="info">
+                                    <h3>{{$latestAppointment->doctor->user->fullname}}</h3>
+                                    <p>Booking on {{ \Carbon\Carbon::parse($latestAppointment->slot->date)->format('d, F, Y') }}
+                                        {{ \Carbon\Carbon::parse($latestAppointment->slot->time)->format('g:i A') }}</p>
+                                </div>
+                            </div>
+                            <div class="card-body-right">
+                                <a href="#" class="cancel"><i class="bi bi-x-lg"></i></a>
+                                <a href="#" class="done"><i class="bi bi-check-lg"></i></a>
+                            </div>
+                        </div>
+                        @endforeach
+                       
+
+
+                        <div class="box1">
+                            <div class="card-body-left">
+                                <img src="{{ asset('assets/img/profile_img.svg') }}" alt="profileImage" class="img-fluid">
                                 <div class="info">
                                     <h3>Dr. Richard James</h3>
                                     <p>Booking on 24th July, 2024</p>
@@ -82,22 +105,7 @@
 
                         <div class="box1">
                             <div class="card-body-left">
-                                <img src="{{ asset('assets/img/profile_img.svg') }}" alt="" class="img-fluid">
-                                <div class="info">
-                                    <h3>Dr. Richard James</h3>
-                                    <p>Booking on 24th July, 2024</p>
-                                </div>
-                            </div>
-                            <div class="card-body-right">
-                                <a href="#" class="cancel"><i class="bi bi-x-lg"></i></a>
-                                <a href="#" class="done"><i class="bi bi-check-lg"></i></a>
-                            </div>
-                        </div>
-
-
-                        <div class="box1">
-                            <div class="card-body-left">
-                                <img src="{{ asset('assets/img/profile_img.svg') }}" alt="" class="img-fluid">
+                                <img src="{{ asset('assets/img/profile_img.svg') }}" alt="Profile image" class="img-fluid">
                                 <div class="info">
                                     <h3>Dr. Richard James</h3>
                                     <p>Booking on 24th July, 2024</p>

@@ -15,7 +15,7 @@
             <div class="row gx-2 gy-4 mt-sm-4 mt-2">
                 <div class="col-lg-4">
                     <div class="about-image">
-                        <img src="{{ asset('assets/img/about_image.svg') }}" alt="">
+                        <img src="{{ asset('assets/img/about_image.svg') }}" alt="About image">
 
                     </div>
                 </div>

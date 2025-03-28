@@ -20,12 +20,13 @@
             <div class="container  mt-2" id="dash-doctor">
                 <div class="doctors">
                     @foreach ($doctors as $doctor)
-                        <div class="doctor">
+                    
+                        <div class="doctor" title="View Doctor Details">
                             <div class="doctor-img">
                                 <img src="{{ str_starts_with($doctor->user->profile_image, 'profile_images/')
                                     ? asset('storage/' . $doctor->user->profile_image)
                                     : asset($doctor->user->profile_image) }}"
-                                    class="img-fluid">
+                                    class="img-fluid" alt="{{ $doctor->user->profile_image }}">
                                 <div class="icons">
                                     <a class="edit" href="{{ route('admin.doctor.edit', $doctor->id) }}"><i
                                             class="bi bi-pencil-square"></i></a>

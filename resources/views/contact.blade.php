@@ -15,7 +15,7 @@
             <div class="row gy-4 w-100   align-items-center  ">
                 <div class="col-lg-6   ">
                     <div class="contact-image">
-                        <img src="{{ asset('assets/img/contact_image.svg') }}" alt="" class="img-fluid">
+                        <img src="{{ asset('assets/img/contact_image.svg') }}" alt="Contact image" class="img-fluid">
 
                     </div>
                 </div>

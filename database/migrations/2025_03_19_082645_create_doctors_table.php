@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('speciality');
             $table->string('education');
             $table->integer('experience')->default(0);
+            $table->enum('available',['available','unavailable'])->default('available');
             $table->decimal('fees', 10, 2)->default(0.00);
             $table->text('about')->nullable();
             $table->timestamps();

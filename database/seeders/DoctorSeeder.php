@@ -254,27 +254,31 @@ $doctors = [
         
 
         // Insert Data into Users & Doctors Tables
-        foreach ($doctors as $doc) {
-            $user = User::create([
-                'fullname' => $doc['fullname'],
-                'email' => $doc['email'],
-                'password' => $doc['password'],
-                'phone' => $doc['phone'],
-                'role' => $doc['role'],
-                'profile_image' => $doc['profile_image'],
-                'gender' => $doc['gender'],
-                'dob' => $doc['dob'],
-                'address' => $doc['address'],
-            ]);
+        // foreach ($doctors as $doc) {
+        //     $user = User::create([
+        //         'fullname' => $doc['fullname'],
+        //         'email' => $doc['email'],
+        //         'password' => $doc['password'],
+        //         'phone' => $doc['phone'],
+        //         'role' => $doc['role'],
+        //         'profile_image' => $doc['profile_image'],
+        //         'gender' => $doc['gender'],
+        //         'dob' => $doc['dob'],
+        //         'address' => $doc['address'],
+        //     ]);
 
-            Doctor::create([
-                'user_id' => $user->id,
-                'speciality' => $doc['speciality'],
-                'education' => $doc['education'],
-                'experience' => $doc['experience'],
-                'fees' => $doc['fees'],
-                'about' => $doc['about'],
-            ]);
-        }
+        //     Doctor::create([
+        //         'user_id' => $user->id,
+        //         'speciality' => $doc['speciality'],
+        //         'education' => $doc['education'],
+        //         'experience' => $doc['experience'],
+        //         'fees' => $doc['fees'],
+        //         'about' => $doc['about'],
+        //     ]);
+        // }
+
+         
+    
+
     }
 }

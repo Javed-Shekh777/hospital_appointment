@@ -2,23 +2,23 @@
     <nav class="navbar navbar-expand-lg">
         <div class="container ">
             <a class="navbar-brand" href="#">
-                <img src="{{ asset('assets/img/logo.svg') }}" alt="" class="img-fluid">
+                <img src="{{ asset('assets/img/logo.svg') }}" alt="Navbar Logo" class="img-fluid">
             </a>
 
             <div class="collapse navbar-collapse justify-content-end justify-content-sm-between"
                 id="navbarSupportedContent">
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ route('/') }}">Home</a>
+                        <a class="nav-link {{ request()->routeIs('/') ? 'active' : '' }}" aria-current="page" href="{{ route('/') }}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('alldoctors') }}">All Doctors</a>
+                        <a class="nav-link {{ request()->routeIs('alldoctors') ? 'active' : '' }}" href="{{ route('alldoctors') }}">All Doctors</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link"href="{{ route('about') }}">About</a>
+                        <a class="nav-link {{ request()->routeIs('about') ? 'active' : '' }}" href="{{ route('about') }}">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('contact') }}">contact</a>
+                        <a class="nav-link {{ request()->routeIs('contact') ? 'active' : '' }}" href="{{ route('contact') }}">contact</a>
                     </li>
                 </ul>
             </div>

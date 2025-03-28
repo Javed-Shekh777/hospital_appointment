@@ -9,7 +9,7 @@
             <div class="container-fluid ">
                 <div class="d-flex align-items-center">
                     <a class="navbar-brand" href="{{ route('admin.dashboard') }}">
-                        <img src="{{ asset('assets/img/logo.svg') }}" alt="" class="img-fluid">
+                        <img src="{{ secure_asset('assets/img/logo.svg') }}" alt="" class="img-fluid" class="profile image">
                     </a>
                     <div class="sidebar-btn" id="sidebarBtn"><i class="bi bi-list"></i></div>
                 </div>
@@ -56,10 +56,20 @@
                     @endif
                     @if(Auth::check() && (Auth::user()->role == ('doctor'||'admin')))
                    
-                    <li class="sidebar-item {{ request()->routeIs('admin.patients') ? 'active' : '' }}">
-                        <a href="{{ route('admin.doctors') }}" class="sidebar-link">
+                    <li class="sidebar-item {{ request()->routeIs('admin.allpatients') ? 'active' : '' }}">
+                        <a href="{{ route('admin.allpatients') }}" class="sidebar-link">
                             <span class="sidebar-link-icon"><i class="bi bi-people"></i></span>
                             <span class="sidebar-link-title">Patients</span>
+                        </a>
+                    </li>
+                    @endif
+
+                    @if(Auth::check() && (Auth::user()->role == ('admin')))
+                   
+                    <li class="sidebar-item {{ request()->routeIs('admin.allusers') ? 'active' : '' }}">
+                        <a href="{{ route('admin.allusers') }}" class="sidebar-link">
+                            <span class="sidebar-link-icon"><i class="bi bi-people"></i></span>
+                            <span class="sidebar-link-title">All Users</span>
                         </a>
                     </li>
                     @endif
@@ -79,12 +89,12 @@
 
 
     <!-- Vendor JS Files -->
-    <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/aos/aos.js') }}"></script>
-    <script src="{{ asset('assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
+    <script src="{{ secure_asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ secure_asset('assets/vendor/aos/aos.js') }}"></script>
+    <script src="{{ secure_asset('assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
 
     <!-- Main JS File -->
-    <script src="{{ asset('assets/js/main.js') }}"></script>
+    <script src="{{ secure_asset('assets/js/main.js') }}"></script>
 </body>
 
 </html>

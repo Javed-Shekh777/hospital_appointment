@@ -24,11 +24,30 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
-            'email' => fake()->unique()->safeEmail(),
-            'email_verified_at' => now(),
-            'password' => static::$password ??= Hash::make('password'),
-            'remember_token' => Str::random(10),
+            'fullname' => $this->faker->name(),
+            'email' => $this->faker->unique()->safeEmail(),
+            'password' => Hash::make('123456'),
+            'phone' => $this->faker->phoneNumber(),
+            'role' => $this->faker->randomElement(['doctor','patient']),
+            'gender' => $this->faker->randomElement(['Male', 'Female', 'Other']),
+            'dob' => $this->faker->date(),
+            'address' => $this->faker->address(),
+            'profile_image' => $this->faker->randomElement([
+                'assets/img/gen-p-1.svg',
+                'assets/img/gen-p-2.svg',
+                'assets/img/gen-p-3.svg',
+                'assets/img/gen-p-4.svg',
+                'assets/img/gen-p-5.svg',
+                'assets/img/gen-p-6.svg',
+                'assets/img/gen-p-7.svg',
+                'assets/img/gen-p-8.svg',
+                'assets/img/gen-p-9.svg',
+                'assets/img/gen-p-10.svg',
+                'assets/img/gen-p-11.svg',
+                'assets/img/gen-p-12.svg',
+            ]),
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 

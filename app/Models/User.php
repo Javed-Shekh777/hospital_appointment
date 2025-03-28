@@ -54,6 +54,18 @@ class User extends Authenticatable
 
     public function doctor()
     {
-        return $this->hasOne(Doctor::class);
+        return $this->hasOne(Doctor::class, 'user_id');
+    }
+
+    // Agar user ek patient hai, to uske appointments fetch karne ke liye
+    public function appointments()
+    {
+        return $this->hasMany(Appointment::class, 'patient_id');
+    }
+
+    // User ke payments ko fetch karne ke liye
+    public function payments()
+    {
+        return $this->hasMany(Payment::class, 'user_id');
     }
 }
