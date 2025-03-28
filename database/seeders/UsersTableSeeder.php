@@ -60,14 +60,16 @@ class UsersTableSeeder extends Seeder
     // $this->call(UsersTableSeeder::class);
 
 
-       $doctors = User::factory()->count(15)->create([
+    $doctors = User::factory()->count(15)->create([
         'role' => 'doctor'
     ]);
 
+    // Seed Patients
     User::factory()->count(5)->create([
         'role' => 'patient'
     ]);
 
+    // Ensure Doctor Factory is Called
     $doctors->each(function ($doctorUser) {
         Doctor::factory()->create(['user_id' => $doctorUser->id]);
     });

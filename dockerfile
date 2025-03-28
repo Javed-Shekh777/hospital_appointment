@@ -18,7 +18,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 # Enable Apache mod_rewrite for Laravel
 RUN a2enmod rewrite
 
-# Copy Laravel Apache configuration (First Step)
+# Copy Laravel Apache configuration
 COPY apache-laravel.conf /etc/apache2/sites-available/000-default.conf
 
 # Set working directory
@@ -28,11 +28,14 @@ WORKDIR /var/www/html
 COPY . .
 
 # Install Laravel dependencies
-RUN composer install --optimize-autoloader
+RUN composer install --optimize-autoloader --no-dev
 
+# Fix autoload issues
+RUN composer dump-autoload
 
 # Set proper permissions
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
+RUN chmod -R 777 /var/www/html/storage /var/www/html/bootstrap/cache
 
 # Copy entrypoint script and give it execute permission
 COPY entrypoint.sh /entrypoint.sh

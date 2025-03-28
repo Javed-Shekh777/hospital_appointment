@@ -1,12 +1,15 @@
 #!/bin/sh
-composer install --optimize-autoloader
-# Clear Old Caches
+
+# Install Dependencies
+composer install --optimize-autoloader --no-dev
+composer dump-autoload
+
+# Clear Cache
 php artisan optimize:clear
 php artisan cache:clear
 php artisan config:clear
 php artisan route:clear
 php artisan view:clear
-php artisan event:clear
 
 # Ensure Storage Link Exists
 if [ ! -L "public/storage" ]; then
