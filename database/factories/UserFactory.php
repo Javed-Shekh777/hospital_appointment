@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 use App\Models\Doctor;
 use App\Models\User;
 
+
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
  */
@@ -27,6 +28,7 @@ protected static ?string $password;
      */
     public function definition(): array
     {
+
         return [
             'fullname' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),

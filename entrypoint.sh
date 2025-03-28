@@ -3,6 +3,7 @@
 # Install Dependencies
 composer install --optimize-autoloader --no-dev
 composer dump-autoload
+composer require fakerphp/faker --dev
 
 # Clear Cache
 php artisan optimize:clear

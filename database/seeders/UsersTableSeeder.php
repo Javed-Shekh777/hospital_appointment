@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Doctor;
+use Faker\Factory as Faker;
 
 
 
@@ -59,7 +60,7 @@ class UsersTableSeeder extends Seeder
 
     // $this->call(UsersTableSeeder::class);
 
-
+    $faker = Faker::create(); 
     $doctors = User::factory()->count(15)->create([
         'role' => 'doctor'
     ]);

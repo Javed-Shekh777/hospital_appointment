@@ -26,12 +26,17 @@ WORKDIR /var/www/html
 
 # Copy Laravel files
 COPY . .
+ 
 
-# Install Laravel dependencies
+# Install dependencies
 RUN composer install --optimize-autoloader --no-dev
+
+# Ensure Faker is installed
+RUN composer require fakerphp/faker --dev
 
 # Fix autoload issues
 RUN composer dump-autoload
+
 
 # Set proper permissions
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
