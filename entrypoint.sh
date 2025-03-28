@@ -1,5 +1,5 @@
 #!/bin/sh
-
+composer install --optimize-autoloader
 # Clear Old Caches
 php artisan optimize:clear
 php artisan cache:clear
