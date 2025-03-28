@@ -1,23 +1,24 @@
 #!/bin/sh
 
-# Clear old caches
-php artisan config:clear
-php artisan cache:clear
-php artisan view:clear
-php artisan route:clear
-php artisan event:clear
+# Clear Old Caches
 php artisan optimize:clear
+php artisan cache:clear
+php artisan config:clear
+php artisan route:clear
+php artisan view:clear
+php artisan event:clear
 
-# Storage Link (अगर images ना दिख रही हों)
-php artisan storage:link
+# Ensure Storage Link Exists
+if [ ! -L "public/storage" ]; then
+    php artisan storage:link
+fi
 
-# Run Laravel Migrations (Clean Start)
+# Run Migrations & Seeding
 php artisan migrate:fresh --seed --force
 
-php artisan db:seed --class=UsersTableSeeder --force
-
-# Cache Config for Performance
+# Cache Config & Routes for Performance
 php artisan config:cache
+php artisan route:cache
 
-# Start Apache server
+# Start Apache Server
 apache2-foreground
