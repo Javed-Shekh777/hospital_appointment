@@ -2,79 +2,36 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Doctor;
-use Faker\Factory as Faker;
-
-
-
+use App\Models\AvailableSlot;
 
 class UsersTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
-    public function run():void
+    public function run(): void
     {
-        // DB::table('users')->insert([
-        //     [
-        //         'fullname' => 'Admin User',
-        //         'email' => 'admin@example.com',
-        //         'password' => '123456',
-        //         'phone' => '9999999999',
-        //         'role' => 'patient',
-        //         'gender' => 'Male',
-        //         'dob' => '1990-01-01',
-        //         'address' => 'Admin Address',
-        //         'created_at' => now(),
-        //         'updated_at' => now(),
-        //     ],
-        //     [
-        //         'fullname' => 'Doctor User',
-        //         'email' => 'doctor@example.com',
-        //         'password' => '123456',
-        //         'phone' => '8888888888',
-        //         'role' => 'patient',
-        //         'gender' => 'Female',
-        //         'dob' => '1985-05-15',
-        //         'address' => 'Doctor Address',
-        //         'created_at' => now(),
-        //         'updated_at' => now(),
-        //     ],
-        //     [
-        //         'fullname' => 'Patient User',
-        //         'email' => 'patient@example.com',
-        //         'password' => '123456',
-        //         'phone' => '7777777777',
-        //         'role' => 'patient',
-        //         'gender' => 'Other',
-        //         'dob' => '1995-10-20',
-        //         'address' => 'Patient Address',
-        //         'created_at' => now(),
-        //         'updated_at' => now(),
-        //     ]
-        // ]);
+        // Seed Doctors
+        $doctors = User::factory()->count(15)->create([
+            'role' => 'doctor'
+        ]);
 
-    // $this->call(UsersTableSeeder::class);
+        // Seed Patients
+        User::factory()->count(5)->create([
+            'role' => 'patient'
+        ]);
 
-    $faker = Faker::create(); 
-    $doctors = User::factory()->count(15)->create([
-        'role' => 'doctor'
-    ]);
+        // Ensure Doctor Factory is Called & Create Available Slots
+        $doctors->each(function ($doctorUser) {
+            $doctor = Doctor::factory()->create(['user_id' => $doctorUser->id]);
 
-    // Seed Patients
-    User::factory()->count(5)->create([
-        'role' => 'patient'
-    ]);
-
-    // Ensure Doctor Factory is Called
-    $doctors->each(function ($doctorUser) {
-        Doctor::factory()->create(['user_id' => $doctorUser->id]);
-    });
-
+            // Seed Available Slots for each Doctor
+            AvailableSlot::factory()->count(5)->create([
+                'doctor_id' => $doctor->id,
+            ]);
+        });
     }
-
 }

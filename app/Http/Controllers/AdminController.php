@@ -267,9 +267,10 @@ class AdminController extends Controller
                 $doctor->fees = $request->fees;
                 $doctor->save();
     
-                AvailableSlot::where('doctor_id', $doctor->id)->delete();
     
-                if ($request->has('slot_date')) {
+                if ($request->has('slot_date')  && count($request->slot_date) > 0) {
+                AvailableSlot::where('doctor_id', $doctor->id)->delete();
+
                     foreach ($request->slot_date as $key => $date) {
                         AvailableSlot::create([
                             'doctor_id' => $doctor->id,

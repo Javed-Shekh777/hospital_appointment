@@ -58,11 +58,15 @@ window.addEventListener("DOMContentLoaded", () => {
             document.getElementById("roleDoctorAbout").style.display = "flex";
             document.getElementById("education").style.display = "flex";
             document.getElementById("addSlots").style.display = "block";
+        } else {
+            document.getElementById("roleDoctorMax").style.display = "none";
+            document.getElementById("roleDoctorAbout").style.display = "none";
+            document.getElementById("education").style.display = "none";
+            document.getElementById("addSlots").style.display = "none";
         }
     });
 
     document.getElementById("add_slot")?.addEventListener("click", function () {
-        console.log("gdsfdsf");
         let slotContainer = document.getElementById("slot_container");
         let slotRow = document.createElement("div");
         slotRow.classList.add("row", "mt-2");
@@ -96,14 +100,12 @@ window.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-
-    document.getElementById("payHere")?.addEventListener("click",function(e){
+    document.getElementById("payHere")?.addEventListener("click", function (e) {
         e.target.style.display = "none";
-        document.querySelectorAll(".pay").forEach(function(pay){
+        document.querySelectorAll(".pay").forEach(function (pay) {
             pay.style.display = "inline-block";
-        })
-
-    })
+        });
+    });
 });
 
 // function selectDate(element, date) {
@@ -179,8 +181,7 @@ window.addEventListener("DOMContentLoaded", () => {
     /* <input type="hidden" name="doctor_id" value="{{ $doctor->id }}"> */
 }
 
-function selectDate(element, date,slotId) {
-    console.log(date);
+function selectDate(element, date, slotId) {
     document
         .querySelectorAll(".date .col-auto")
         .forEach((el) => el.classList.remove("active"));
@@ -192,7 +193,7 @@ function selectDate(element, date,slotId) {
         .querySelector(".day")
         .textContent.trim();
 
-    document.getElementById("slotId").value = slotId;    
+    document.getElementById("slotId").value = slotId;
     document
         .querySelectorAll(".time-slots")
         .forEach((el) => (el.style.display = "none"));
