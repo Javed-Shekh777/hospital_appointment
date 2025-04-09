@@ -15,11 +15,14 @@ return new class extends Migration
             $table->id();
             $table->foreignId('doctor_id')->constrained('doctors')->onDelete('cascade');
             $table->date('date');
+            $table->time('start_time');  // ✅ add this
+            $table->time('end_time');    // ✅ add this
             $table->enum('status', ['available', 'booked'])->default('available');
             $table->timestamps();
         
-            $table->unique(['doctor_id']); // Correct placement
+            $table->unique(['doctor_id', 'date', 'start_time']); // ✅ time की जगह start_time को unique बनाया
         });
+        
         
     }
 
