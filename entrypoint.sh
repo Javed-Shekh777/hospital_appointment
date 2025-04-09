@@ -13,11 +13,15 @@ if [ ! -L "public/storage" ]; then
 fi
 
 # Run Migrations & Seeding (Only in local/dev)
-if [ "$APP_ENV" != "production" ]; then
-    php artisan migrate:fresh --seed --force
-else
-    php artisan migrate --force
-fi
+# if [ "$APP_ENV" != "production" ]; then
+#     php artisan migrate:fresh --seed --force
+# else
+#     php artisan migrate --force
+# fi
+
+# Run Migrations & Seeding (Always)
+ php artisan migrate:fresh --seed --force
+
 
 # Cache Config & Routes for Performance
 php artisan config:cache
