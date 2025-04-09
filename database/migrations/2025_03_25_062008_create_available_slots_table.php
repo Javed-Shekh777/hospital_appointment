@@ -18,7 +18,7 @@ return new class extends Migration
             $table->enum('status', ['available', 'booked'])->default('available');
             $table->timestamps();
         
-            $table->unique(['doctor_id', 'date']); // Correct placement
+            $table->unique(['doctor_id']); // Correct placement
         });
         
     }
