@@ -7,7 +7,7 @@ php artisan config:clear
 php artisan route:clear
 php artisan view:clear
 
-# Ensure Storage Link Exists
+# Ensure Storage Link Exists   asset
 if [ ! -L "public/storage" ]; then
     php artisan storage:link
 fi

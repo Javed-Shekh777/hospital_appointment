@@ -106,6 +106,8 @@ window.addEventListener("DOMContentLoaded", () => {
             pay.style.display = "inline-block";
         });
     });
+
+
 });
 
 // function selectDate(element, date) {

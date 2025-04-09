@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Middleware\RoleMiddleware;
 use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\PaymentController;
 
 
 // Simple Routes 
@@ -18,7 +19,8 @@ Route::get('/my-appointments',[HomeController::class,'myappointments'])->name("m
 Route::post('/book-appointment',[HomeController::class,'bookappointment'])->name("book-appointment");
 Route::get('/cancel-appointment/{id}',[HomeController::class,'cancelappointment'])->name("cencel-appointment");
 
-
+Route::get('/pay', [PaymentController::class, 'initiatePayment']);
+Route::get('/payment-success', [PaymentController::class, 'paymentSuccess']);
 Route::post('/my-profile',[HomeController::class,'myProfileUpdate'])->name("my-profile.update");
 
 
@@ -79,3 +81,4 @@ Route::get('/doctor/{id}',[HomeController::class,'doctor'])->name('doctor');
 
 
 
+ 
